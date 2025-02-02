@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventanilla Santa Mónica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #turno {
+            font-size: 5em;
+            font-weight: bold;
+            margin: 1em;
+        }
+        button {
+            font-size: 20px;
+            margin: 1em;
+            padding: 10px auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ventanilla 1</h1>
+    <div id="turno">0</div>
+    <button onclick="anteriorTurno()">Anterior</button>
+    <button onclick="siguienteTurno()">Siguiente</button>
+    <br>
+    <input type="number" id="inicio" placeholder="Número inicial">
+    <button onclick="iniciarTurno()">Iniciar</button>
+
+    <script>
+        let turno = 0;
+        
+        function siguienteTurno() {
+            turno++;
+            actualizarPantalla();
+        }
+
+        function anteriorTurno() {
+            if (turno > 0) {
+                turno--;
+                actualizarPantalla();
+            }
+        }
+
+        function iniciarTurno() {
+            const inicio = document.getElementById("inicio").value;
+            turno = parseInt(inicio) || 0;
+            actualizarPantalla();
+        }
+
+        function actualizarPantalla() {
+            document.getElementById("turno").textContent = turno;
+        }
+    </script>
+</body>
+</html>
